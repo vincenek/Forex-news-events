@@ -97,25 +97,68 @@
 
     <section id="tools">
       <h2>Tools I Use</h2>
+
       <h3>Trading Platforms:</h3>
       <ul>
         <li>MetaTrader 4/5</li>
         <li>TradingView (Free plan—no shame)</li>
       </ul>
+
       <h3>Indicators:</h3>
       <ul>
-        <li>Manual Supply/Demand</li>
-        <li>EMAs for structure</li>
-        <li>No laggy indicators—price is king</li>
+        <li>Manual Supply/Demand zones</li>
+        <li>EMAs for structure only</li>
+        <li>No laggy indicators — price is king</li>
+        <li><strong>Custom-built indicator:</strong> Liquidity Sniper v1 (in testing)</li>
       </ul>
+
       <h3>Other Tools:</h3>
       <ul>
-        <li>Notion for journaling</li>
-        <li>Excel logs</li>
-        <li>YouTube + Discord</li>
+        <li>Notion for journaling & trade reviews</li>
+        <li>Excel for logs & stats</li>
+        <li>YouTube (strategy reviews), Discord (networking)</li>
       </ul>
+
+      <h3>Automation:</h3>
+      <p>I’ve built and tested several <strong>trading bots (EAs)</strong> in MetaTrader 5 — many of which have shown profitable results in the strategy tester. I’m now optimizing them for live/demo deployment using forward testing.</p>
+      <p>Currently working on a <strong>personal news calendar tool</strong> that auto-pulls impactful events and marks them into my chart interface. Tired of missing fundamentals or switching tabs — I want my tools integrated, smart, and instant.</p>
     </section>
 
     <section id="future">
       <h2>Vision & Future Plans</h2>
-      <p>Trading is just phase one. I’m 
+      <p>Trading is just phase one. I’m building:</p>
+      <ul>
+        <li><strong>NOvA-X:</strong> An AI-powered wealth management system that helps everyday people grow capital with intelligent automation.</li>
+        <li><strong>FlatChain:</strong> A blockchain protocol that lets AI verify fiat transactions for real-world finance — not crypto hype, just utility.</li>
+        <li><strong>Quantum AI Tax:</strong> A futuristic, global solution to automate tax systems, reduce corruption, and bring transparency to money flow.</li>
+        <li><strong>AutoNewsFX:</strong> A personal Forex news calendar that tags volatility spikes and macroeconomic events directly inside my platform.</li>
+        <li><strong>Smart Chart Bot (Project “Clairvoyant”):</strong> An on-screen assistant that auto-detects HH/LL, liquidity zones, and signals trade confluences with precision.</li>
+      </ul>
+    </section>
+
+    <section id="blog">
+      <h2>Blog / Thoughts</h2>
+      <ul>
+        <li>“Losing $5 taught me more than winning $50 ever could.”</li>
+        <li>“Here’s why I’m focusing on prop firms AFTER building my own capital.”</li>
+        <li>“How faith keeps me grounded while trading high-risk markets.”</li>
+        <li>“London session ain’t for me—and that’s okay.”</li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2>Contact Me</h2>
+      <p>Want to link up? Talk trading, ideas, bots, fintech? Let’s connect.</p>
+      <ul>
+        <li><strong>WhatsApp:</strong> +2349153073571</li>
+        <li><strong>Email:</strong> kenechukwu130@gmail.com</li>
+      </ul>
+      <p>I’m open to collaborations, feedback, or just trading convos. Don’t hesitate to reach out.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 TradeWithMeFX. Built by the grind, powered by the vision.</p>
+  </footer>
+</body>
+</html>
