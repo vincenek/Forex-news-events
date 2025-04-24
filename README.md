@@ -22,7 +22,7 @@
   <main>
     <section class="hero">
       <h2>Welcome, Trader.</h2>
-      <p>I’m [Your Name], a passionate and results-driven Forex trader. This is your inside look into my trading journey, methodology, and why you should consider working with me.</p>
+      <p>I’m vincent, a passionate and results-driven Forex trader. This is your inside look into my trading journey, methodology, and why you should consider working with me.</p>
     </section>
 
     <section class="cta">
