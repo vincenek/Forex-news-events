@@ -32,7 +32,7 @@
 
     <section id="about">
       <h2>About Me</h2>
-      <p>Yo, I’m [Your Name].</p>
+      <p>Yo, I’m vincent.</p>
       <p>I’m a trader, a builder, and someone who believes in chasing big visions with both logic and faith. I started trading because I wanted financial control. Not just money—but the power to choose my own path, on my terms.</p>
       <p>I come from an accounting background, but the markets taught me more about life, patience, and risk than any textbook ever could.</p>
     </section>
