@@ -1,0 +1,111 @@
+/* Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #0B0C10;  /* deep dark navy */
+  color: #C5C6C7;             /* soft white-gray text */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  padding-bottom: 50px;
+}
+
+a {
+  color: #66FCF1;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #ffffff;
+}
+
+/* Header */
+header {
+  background-color: #1F2833;
+  padding: 2rem 1rem;
+  text-align: center;
+  border-bottom: 2px solid #45A29E;
+}
+
+.branding h1 {
+  font-size: 2.5rem;
+  color: #66FCF1;
+  margin-bottom: 0.5rem;
+}
+
+.branding p {
+  font-size: 1.1rem;
+  color: #C5C6C7;
+}
+
+/* Navigation Bar */
+nav {
+  background-color: #0B0C10;
+  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  border-bottom: 1px solid #45A29E;
+}
+
+nav a {
+  color: #66FCF1;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: 0.2s ease;
+}
+
+nav a:hover {
+  color: #ffffff;
+}
+
+/* Main Content */
+main {
+  padding: 2rem;
+  max-width: 1000px;
+  margin: auto;
+}
+
+section {
+  margin-bottom: 3rem;
+}
+
+.hero h2 {
+  color: #66FCF1;
+  margin-bottom: 1rem;
+}
+
+section h2 {
+  border-bottom: 2px solid #45A29E;
+  margin-bottom: 1rem;
+  color: #66FCF1;
+}
+
+section h3 {
+  margin-top: 1rem;
+  color: #45A29E;
+}
+
+ul {
+  margin-left: 1.5rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+/* Footer */
+footer {
+  background-color: #1F2833;
+  text-align: center;
+  padding: 1.5rem;
+  color: #C5C6C7;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
