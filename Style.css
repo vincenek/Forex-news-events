@@ -1,4 +1,4 @@
-/* Reset & Base Styles */
+/* Base Reset */
 * {
   margin: 0;
   padding: 0;
@@ -6,89 +6,73 @@
 }
 
 body {
-  background-color: #0B0C10;  /* deep dark navy */
-  color: #C5C6C7;             /* soft white-gray text */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.6;
-  padding-bottom: 50px;
-}
-
-a {
-  color: #66FCF1;
-  text-decoration: none;
-}
-
-a:hover {
-  color: #ffffff;
-}
-
-/* Header */
-header {
-  background-color: #1F2833;
-  padding: 2rem 1rem;
-  text-align: center;
-  border-bottom: 2px solid #45A29E;
-}
-
-.branding h1 {
-  font-size: 2.5rem;
-  color: #66FCF1;
-  margin-bottom: 0.5rem;
-}
-
-.branding p {
-  font-size: 1.1rem;
+  background-color: #0b0c10;
   color: #C5C6C7;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  line-height: 1.6;
 }
 
-/* Navigation Bar */
-nav {
-  background-color: #0B0C10;
-  padding: 1rem;
+/* Hero Section */
+.hero-section {
+  background: radial-gradient(circle, #1f2833, #0b0c10);
+  color: #66FCF1;
+  text-align: center;
+  padding: 80px 20px 60px;
+  min-height: 60vh;
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
-  gap: 1rem;
-  border-bottom: 1px solid #45A29E;
+  flex-direction: column;
+}
+
+.hero-content h1 {
+  font-size: 2.8rem;
+  margin-bottom: 15px;
+}
+
+.tagline {
+  font-size: 1.2rem;
+  color: #45A29E;
+}
+
+/* Navigation */
+nav {
+  display: flex;
+  justify-content: center;
+  background-color: #0b0c10;
+  padding: 1rem;
+  border-top: 2px solid #45A29E;
+  border-bottom: 2px solid #45A29E;
+  gap: 1.5rem;
 }
 
 nav a {
   color: #66FCF1;
-  font-weight: bold;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  transition: 0.2s ease;
+  font-weight: bold;
+  text-decoration: none;
 }
 
 nav a:hover {
-  color: #ffffff;
+  color: #fff;
 }
 
 /* Main Content */
 main {
   padding: 2rem;
-  max-width: 1000px;
+  max-width: 900px;
   margin: auto;
 }
 
 section {
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
 }
 
-.hero h2 {
-  color: #66FCF1;
+h2 {
   margin-bottom: 1rem;
-}
-
-section h2 {
   border-bottom: 2px solid #45A29E;
-  margin-bottom: 1rem;
   color: #66FCF1;
-}
-
-section h3 {
-  margin-top: 1rem;
-  color: #45A29E;
+  padding-bottom: 0.5rem;
 }
 
 ul {
@@ -102,10 +86,8 @@ li {
 /* Footer */
 footer {
   background-color: #1F2833;
+  color: #C5C6C7;
   text-align: center;
   padding: 1.5rem;
-  color: #C5C6C7;
-  position: relative;
-  bottom: 0;
-  width: 100%;
+  margin-top: 2rem;
 }
