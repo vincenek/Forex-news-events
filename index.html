@@ -11,7 +11,7 @@
             --primary: #00ff88;
             --background: #1a1a1a;
             --surface: #2d2d2d;
-            --text: #e0e0e0;
+            --text: #ffffff;
         }
 
         * {
@@ -41,7 +41,7 @@
             padding: 1.5rem;
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-            margin-bottom: 2rem;
+            position: relative;
         }
 
         h1, h2, h3 {
@@ -60,15 +60,15 @@
             display: block;
             margin: 0.5rem 0;
             font-size: 0.9rem;
-            color: var(--primary);
+            color: #cccccc;
         }
 
         input, select, textarea {
             background: #404040;
             border: 1px solid #606060;
             color: var(--text);
-            padding: 0.5rem;
-            margin: 0.5rem 0;
+            padding: 0.75rem;
+            margin: 0.25rem 0;
             width: 100%;
             border-radius: 4px;
             font-size: 1rem;
@@ -78,12 +78,12 @@
             background: var(--primary);
             color: #000;
             border: none;
-            padding: 0.75rem 1.5rem;
+            padding: 1rem 2rem;
             border-radius: 4px;
             cursor: pointer;
-            font-weight: 500;
+            font-weight: 700;
             transition: opacity 0.3s;
-            margin: 0.5rem 0;
+            margin: 1rem 0;
         }
 
         button:hover {
@@ -99,7 +99,7 @@
 
         .chart-container {
             height: 300px;
-            margin: 1rem 0;
+            margin: 2rem 0;
         }
 
         .emotion-grid {
@@ -117,13 +117,15 @@
 
         #savedTrades {
             margin-top: 2rem;
+            border-top: 2px solid var(--surface);
+            padding-top: 2rem;
         }
 
-        .trade-card {
-            background: #333333;
+        .trade-entry {
+            background: var(--surface);
             padding: 1rem;
-            border-radius: 6px;
             margin: 1rem 0;
+            border-radius: 6px;
         }
 
         @media (max-width: 768px) {
@@ -141,13 +143,18 @@
     <div class="logo">💶💲💴</div>
     
     <div class="container">
-        <!-- Trade Entry Section -->
+        <!-- Before Trade Section -->
         <div class="section">
-            <h2>Trade Entry</h2>
+            <h2>Pre-Trade Preparation</h2>
+            <div class="checklist">
+                <label><input type="checkbox"> HVOB Confirmation</label>
+                <label><input type="checkbox"> Price Action Setup</label>
+                <label><input type="checkbox"> 33% Rule Compliance</label>
+                <label><input type="checkbox"> Volume Analysis</label>
+            </div>
             
-            <h3>Market Context</h3>
             <label>Currency Pair</label>
-            <input type="text" id="currencyPair" placeholder="EUR/USD">
+            <input type="text" placeholder="EUR/USD" id="currencyPair">
             
             <label>Timeframe</label>
             <select id="timeframe">
@@ -156,58 +163,85 @@
                 <option value="15M">15 Minutes</option>
                 <option value="1H">1 Hour</option>
             </select>
-
-            <h3>Trade Setup Checklist</h3>
-            <div class="checklist">
-                <label><input type="checkbox" id="hvob"> HVOB Confirmation</label>
-                <label><input type="checkbox" id="priceAction"> Price Action Setup</label>
-                <label><input type="checkbox" id="rule33"> 33% Rule Compliance</label>
-                <label><input type="checkbox" id="volume"> Volume Analysis</label>
-            </div>
-
-            <h3>Risk Management</h3>
+            
+            <label>Confidence Level</label>
+            <select id="confidence">
+                <option value="1">1 - Low</option>
+                <option value="2">2 - Moderate</option>
+                <option value="3">3 - Neutral</option>
+                <option value="4">4 - High</option>
+                <option value="5">5 - Very High</option>
+            </select>
+            
             <label>Entry Price</label>
-            <input type="number" id="entryPrice" step="0.00001">
+            <input type="number" step="0.00001" id="entryPrice">
             
             <label>Stop Loss</label>
-            <input type="number" id="stopLoss" step="0.00001">
+            <input type="number" step="0.00001" id="stopLoss">
             
             <label>Take Profit</label>
-            <input type="number" id="takeProfit" step="0.00001">
+            <input type="number" step="0.00001" id="takeProfit">
             
-            <div id="riskReward">Risk/Reward: -</div>
-
-            <h3>Emotional State</h3>
-            <select id="emotion">
-                <option value="1">1 - Low Confidence</option>
-                <option value="2">2 - Moderate Confidence</option>
-                <option value="3">3 - Neutral</option>
-                <option value="4">4 - High Confidence</option>
-                <option value="5">5 - Very High Confidence</option>
-            </select>
-
-            <button onclick="saveTrade()">Save Trade</button>
+            <div id="riskReward" style="margin: 1rem 0; font-weight: 700;">Risk/Reward: -</div>
         </div>
 
-        <!-- Analysis Section -->
+        <!-- During Trade Section -->
         <div class="section">
-            <h2>Performance Analysis</h2>
+            <h2>Trade Execution</h2>
+            <label>Real-time Notes</label>
+            <textarea rows="4" id="tradeNotes"></textarea>
+            
+            <h3>Trade Adjustments</h3>
+            <div class="trade-timeline" id="adjustments">
+                <!-- Adjustments will be added here -->
+            </div>
+            <button onclick="addAdjustment()">Log Adjustment</button>
+            
+            <h3>Emotion Check</h3>
+            <div class="emotion-grid">
+                <button onclick="logEmotion('calm')">Calm 😌</button>
+                <button onclick="logEmotion('anxious')">Anxious 😟</button>
+                <button onclick="logEmotion('confident')">Confident 😎</button>
+            </div>
+        </div>
+
+        <!-- Post Trade Section -->
+        <div class="section">
+            <h2>Trade Analysis</h2>
+            <label>Outcome</label>
+            <select id="tradeOutcome">
+                <option value="win">Win</option>
+                <option value="loss">Loss</option>
+                <option value="breakeven">Breakeven</option>
+            </select>
+            
+            <label>Pips Gained/Lost</label>
+            <input type="number" id="pips">
+            
+            <label>Lessons Learned</label>
+            <textarea rows="3" id="lessons"></textarea>
+            
             <div class="chart-container">
                 <canvas id="performanceChart"></canvas>
-            </div>
-            
-            <h3>Trade Journal</h3>
-            <div id="savedTrades">
-                <!-- Saved trades will appear here -->
             </div>
         </div>
     </div>
 
+    <div class="container">
+        <div class="section">
+            <button onclick="saveTrade()" style="width: 100%; padding: 1.5rem;">Save Trade Journal Entry</button>
+        </div>
+    </div>
+
+    <div id="savedTrades"></div>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Initialize charts
+            initializeCharts();
             // Load saved trades
             loadSavedTrades();
-            initializeCharts();
+            // Setup event listeners
             setupCalculators();
         });
 
@@ -215,7 +249,7 @@
             const entry = document.getElementById('entryPrice');
             const sl = document.getElementById('stopLoss');
             const tp = document.getElementById('takeProfit');
-
+            
             const calculateRR = () => {
                 const entryVal = parseFloat(entry.value);
                 const slVal = parseFloat(sl.value);
@@ -224,12 +258,13 @@
                 if (!isNaN(entryVal) && !isNaN(slVal) && !isNaN(tpVal)) {
                     const risk = Math.abs(entryVal - slVal);
                     const reward = Math.abs(tpVal - entryVal);
-                    const rrRatio = reward / risk;
-                    document.getElementById('riskReward').textContent = 
-                        `Risk/Reward: 1:${rrRatio.toFixed(2)}`;
-                } else {
-                    document.getElementById('riskReward').textContent = 'Risk/Reward: -';
+                    if(risk > 0) {
+                        document.getElementById('riskReward').textContent = 
+                            `Risk/Reward: 1:${(reward/risk).toFixed(2)}`;
+                        return;
+                    }
                 }
+                document.getElementById('riskReward').textContent = 'Risk/Reward: -';
             };
 
             [entry, sl, tp].forEach(input => {
@@ -237,87 +272,122 @@
             });
         }
 
+        function addAdjustment() {
+            const adjustment = document.createElement('div');
+            adjustment.innerHTML = `
+                <div style="margin: 1rem 0;">
+                    <label>${new Date().toLocaleString()}</label>
+                    <input type="text" placeholder="Adjustment Details" style="margin: 0.5rem 0;">
+                    <input type="number" placeholder="New Price Level" step="0.00001">
+                </div>
+            `;
+            document.getElementById('adjustments').appendChild(adjustment);
+        }
+
+        function logEmotion(emotion) {
+            const notes = document.getElementById('tradeNotes');
+            notes.value += `\n[${new Date().toLocaleTimeString()}] Emotion: ${emotion}`;
+        }
+
         function initializeCharts() {
             try {
-                // Performance Chart
                 const ctx = document.getElementById('performanceChart').getContext('2d');
                 new Chart(ctx, {
                     type: 'bar',
                     data: {
-                        labels: ['Wins', 'Losses', 'Avg R/R'],
+                        labels: ['Win Rate', 'Avg Risk/Reward', 'Max Drawdown'],
                         datasets: [{
                             label: 'Performance Metrics',
-                            data: [12, 4, 2.4],
+                            data: [65, 1.8, -12],
                             backgroundColor: [
-                                '#00ff88',
-                                '#ff4444',
-                                '#00aaff'
-                            ]
+                                'rgba(0, 255, 136, 0.8)',
+                                'rgba(0, 255, 136, 0.8)',
+                                'rgba(255, 68, 68, 0.8)'
+                            ],
+                            borderColor: [
+                                'rgba(0, 255, 136, 1)',
+                                'rgba(0, 255, 136, 1)',
+                                'rgba(255, 68, 68, 1)'
+                            ],
+                            borderWidth: 1
                         }]
                     },
                     options: {
                         responsive: true,
-                        maintainAspectRatio: false
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    color: '#ffffff'
+                                }
+                            },
+                            x: {
+                                ticks: {
+                                    color: '#ffffff'
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                labels: {
+                                    color: '#ffffff'
+                                }
+                            }
+                        }
                     }
                 });
             } catch (error) {
-                console.error('Chart error:', error);
+                console.error('Chart initialization error:', error);
             }
         }
 
         function saveTrade() {
             const tradeData = {
-                id: Date.now(),
-                pair: document.getElementById('currencyPair').value,
+                timestamp: new Date().toISOString(),
+                currencyPair: document.getElementById('currencyPair').value,
                 timeframe: document.getElementById('timeframe').value,
-                entry: document.getElementById('entryPrice').value,
-                sl: document.getElementById('stopLoss').value,
-                tp: document.getElementById('takeProfit').value,
-                emotion: document.getElementById('emotion').value,
-                checks: {
-                    hvob: document.getElementById('hvob').checked,
-                    priceAction: document.getElementById('priceAction').checked,
-                    rule33: document.getElementById('rule33').checked,
-                    volume: document.getElementById('volume').checked
-                },
-                timestamp: new Date().toISOString()
+                confidence: document.getElementById('confidence').value,
+                entryPrice: document.getElementById('entryPrice').value,
+                stopLoss: document.getElementById('stopLoss').value,
+                takeProfit: document.getElementById('takeProfit').value,
+                notes: document.getElementById('tradeNotes').value,
+                outcome: document.getElementById('tradeOutcome').value,
+                pips: document.getElementById('pips').value,
+                lessons: document.getElementById('lessons').value,
+                riskReward: document.getElementById('riskReward').textContent
             };
 
-            // Save to localStorage
-            const savedTrades = JSON.parse(localStorage.getItem('trades') || '[]');
+            const savedTrades = JSON.parse(localStorage.getItem('tradingJournal') || '[]');
             savedTrades.push(tradeData);
-            localStorage.setItem('trades', JSON.stringify(savedTrades));
-
-            // Refresh display
+            localStorage.setItem('tradingJournal', JSON.stringify(savedTrades));
+            
             loadSavedTrades();
+            alert('Trade saved successfully!');
         }
 
         function loadSavedTrades() {
-            const savedTrades = JSON.parse(localStorage.getItem('trades') || []);
+            const savedTrades = JSON.parse(localStorage.getItem('tradingJournal') || '[]');
             const container = document.getElementById('savedTrades');
-            container.innerHTML = '';
-
-            savedTrades.forEach(trade => {
-                const tradeCard = document.createElement('div');
-                tradeCard.className = 'trade-card';
-                tradeCard.innerHTML = `
-                    <h3>${trade.pair} @ ${trade.timeframe}</h3>
-                    <p>Entry: ${trade.entry} | SL: ${trade.sl} | TP: ${trade.tp}</p>
-                    <p>Confidence: ${trade.emotion}/5</p>
-                    <p>Checks: ${getChecklistLabels(trade.checks)}</p>
-                    <small>${new Date(trade.timestamp).toLocaleString()}</small>
+            container.innerHTML = '<h2>Saved Trades</h2>';
+            
+            savedTrades.forEach((trade, index) => {
+                const tradeDiv = document.createElement('div');
+                tradeDiv.className = 'trade-entry';
+                tradeDiv.innerHTML = `
+                    <h3>Trade #${index + 1} - ${trade.timestamp}</h3>
+                    <p>Pair: ${trade.currencyPair} | Timeframe: ${trade.timeframe}</p>
+                    <p>Entry: ${trade.entryPrice} | SL: ${trade.stopLoss} | TP: ${trade.takeProfit}</p>
+                    <p>Outcome: ${trade.outcome} | Pips: ${trade.pips}</p>
+                    <p>${trade.riskReward}</p>
+                    <details>
+                        <summary>View Details</summary>
+                        <p>Notes: ${trade.notes}</p>
+                        <p>Lessons: ${trade.lessons}</p>
+                    </details>
                 `;
-                container.appendChild(tradeCard);
+                container.appendChild(tradeDiv);
             });
-        }
-
-        function getChecklistLabels(checks) {
-            const labels = [];
-            if (checks.hvob) labels.push('HVOB');
-            if (checks.priceAction) labels.push('Price Action');
-            if (checks.rule33) labels.push('33% Rule');
-            if (checks.volume) labels.push('Volume');
-            return labels.join(', ') || 'None';
         }
     </script>
 </body>
