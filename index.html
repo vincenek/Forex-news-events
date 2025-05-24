@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Institutional Trading Journal | FXPRO</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary: #1a1f2d;
+            --secondary: #252d3d;
+            --accent: #00c49f;
+            --text: #e0e0e0;
+            --positive: #4caf50;
+            --negative: #ef5350;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        body {
+            background: var(--primary);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: var(--secondary);
+            border-radius: 8px;
+        }
+
+        .logo {
+            display: flex;
+            gap: 5px;
+            font-size: 2.2em;
+        }
+
+        .section {
+            background: var(--secondary);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            background: #2d3444;
+            border: 1px solid #3d4455;
+            color: var(--text);
+            border-radius: 4px;
+        }
+
+        .checklist {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .emotion-scale {
+            display: flex;
+            gap: 15px;
+        }
+
+        .emotion-btn {
+            padding: 8px 15px;
+            border-radius: 20px;
+            background: #3d4455;
+            border: none;
+            color: var(--text);
+            cursor: pointer;
+        }
+
+        .emotion-btn.active {
+            background: var(--accent);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #3d4455;
+        }
+
+        .positive {
+            color: var(--positive);
+        }
+
+        .negative {
+            color: var(--negative);
+        }
+
+        .chart-container {
+            height: 400px;
+            margin-top: 20px;
+        }
+
+        button {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">💶💲💴</div>
+            <h1>Institutional Trading Journal</h1>
+        </div>
+
+        <!-- Before Trade Section -->
+        <div class="section">
+            <h2>Pre-Trade Preparation</h2>
+            <div class="grid-2">
+                <div>
+                    <h3>Setup Checklist</h3>
+                    <div class="checklist">
+                        <label><input type="checkbox"> HVOB Confirmation</label>
+                        <label><input type="checkbox"> Price Action Signal</label>
+                        <label><input type="checkbox"> 33% Rule Validation</label>
+                        <label><input type="checkbox"> Volume Analysis</label>
+                    </div>
+                </div>
+                <div>
+                    <h3>Market Context</h3>
+                    <div class="input-group">
+                        <label>Currency Pair</label>
+                        <input type="text">
+                    </div>
+                    <div class="input-group">
+                        <label>Timeframe</label>
+                        <select>
+                            <option>M15</option>
+                            <option>H1</option>
+                            <option>H4</option>
+                            <option>D1</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- During Trade Section -->
+        <div class="section">
+            <h2>Trade Execution</h2>
+            <div class="grid-2">
+                <div>
+                    <h3>Real-time Notes</h3>
+                    <textarea rows="6"></textarea>
+                </div>
+                <div>
+                    <h3>Adjustment Log</h3>
+                    <table>
+                        <tr><th>Time</th><th>Action</th><th>Price</th></tr>
+                        <!-- Rows will be added dynamically -->
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- After Trade Section -->
+        <div class="section">
+            <h2>Post-Trade Analysis</h2>
+            <div class="grid-2">
+                <div>
+                    <h3>Performance Metrics</h3>
+                    <table>
+                        <tr><td>Outcome</td><td class="positive">Win (+52 pips)</td></tr>
+                        <tr><td>Risk/Reward</td><td>1:2.4</td></tr>
+                        <tr><td>Drawdown</td><td>-1.2%</td></tr>
+                    </table>
+                </div>
+                <div>
+                    <h3>Pattern Recognition</h3>
+                    <p>🔍 Detected: Repeated HVOB Breakout Pattern</p>
+                </div>
+            </div>
+            <div class="chart-container">
+                <canvas id="equityChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Equity Curve Chart
+        const ctx = document.getElementById('equityChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                datasets: [{
+                    label: 'Equity Curve',
+                    data: [100, 105, 103, 108, 112, 115],
+                    borderColor: '#00c49f',
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    y: { grid: { color: '#3d4455' } },
+                    x: { grid: { color: '#3d4455' } }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
